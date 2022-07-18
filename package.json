@@ -49,7 +49,7 @@
   },
   "scripts": {
     "test": "run-s build mocha lint",
-    "build": "run-s build:clean build:3rdparty build:node build:browser build:standard-fonts build:fonts build:vfs",
+    "build": "run-s build:clean build:3rdparty build:node build:browser build:standard-fonts build:fonts build:fonts:th build:vfs",
     "build:clean": "shx rm -rf js build",
     "build:3rdparty": "shx cp node_modules/svg-to-pdfkit/source.js src/3rd-party/svg-to-pdfkit/source.js && shx cp node_modules/svg-to-pdfkit/LICENSE src/3rd-party/svg-to-pdfkit/LICENSE",
     "build:node": "babel src --out-dir js",
@@ -58,6 +58,7 @@
     "build:examples": "node build-examples.js",
     "build:standard-fonts": "shx mkdir -p build/standard-fonts && brfs \"./src/browser-extensions/standard-fonts/Courier.js\" > build/standard-fonts/Courier.js && brfs \"./src/browser-extensions/standard-fonts/Helvetica.js\" > build/standard-fonts/Helvetica.js && brfs \"./src/browser-extensions/standard-fonts/Times.js\" > build/standard-fonts/Times.js && brfs \"./src/browser-extensions/standard-fonts/Symbol.js\" > build/standard-fonts/Symbol.js && brfs \"./src/browser-extensions/standard-fonts/ZapfDingbats.js\" > build/standard-fonts/ZapfDingbats.js",
     "build:fonts": "shx mkdir -p build/fonts && shx mkdir -p build/fonts/Roboto && shx cp -r fonts/Roboto/*.* build/fonts/Roboto && brfs \"./src/browser-extensions/fonts/Roboto.js\" > build/fonts/Roboto.js",
+    "build:fonts:th": "shx mkdir -p build/fonts && shx mkdir -p build/fonts/THSarabunNew && shx cp -r fonts/THSarabunNew/*.* build/fonts/THSarabunNew && brfs \"./src/browser-extensions/fonts/THSarabunNew.js\" > build/fonts/THSarabunNew.js",
     "lint": "eslint \"./src/**/*.js\" \"./tests/**/*.js\" \"./examples/**/*.js\" \"./standard-fonts/**/*.js\" \"./fonts/**/*.js\"",
     "mocha": "mocha --reporter spec \"./tests/**/*.spec.js\"",
     "playground": "node dev-playground/server.js"
